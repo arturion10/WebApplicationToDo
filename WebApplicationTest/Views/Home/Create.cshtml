@@ -1,0 +1,16 @@
+﻿@model WebApplicationTest.Models.TaskToDo
+ 
+<h2>Добавление Задачи</h2>
+<form asp-action="create" asp-controller="home">
+    <p>
+        <label asp-for="Name">Имя</label><br />
+        <input type="text" asp-for="Name" />
+    </p>
+    <p>
+        <label asp-for="Description">Описание</label><br />
+        <input type="text" asp-for="Description" />
+    </p>
+    <p>
+        <input type="submit" value="Создать" />
+    </p>
+</form>

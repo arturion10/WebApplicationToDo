@@ -1,0 +1,30 @@
+﻿@model IEnumerable<WebApplicationTest.Models.TaskToDo>
+ 
+<h2>ToDo Список задач</h2>
+<p><a asp-action="Create">Создать Задачу</a></p>
+<table class="table">
+     <tr><th>Номер</th><th>Задача</th><th>Описание</th><th>Статус</th><th>Время создания</th></tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td>@item.Description</td>
+            <td>@(item.IsCompleted ? "Выполнено" : "Не выполнено")</td>
+            <td>@item.StartDateTime</td>
+            <td>
+                <a asp-action="Edit" asp-controller="Home" asp-route-id="@item.Id">Изменить</a>
+            </td>
+            <td>
+                <form asp-controller="Home" asp-action="EditProperty" method="post"  asp-route-id="@item.Id">
+                    <input type="submit" value="Изменить Статус" />
+                </form>
+            </td>
+            <td>
+                <form asp-controller="Home" asp-action="Delete" method="post"  asp-route-id="@item.Id">
+                    <input type="submit" value="Удалить" />
+                </form>
+            </td>
+        </tr>
+    }
+</table>
